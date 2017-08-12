@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no" />
+    <title></title>
+    <!-- 高清方案脚本 -->
+    <script src="<%= htmlWebpackPlugin.options.path %>/lib/rem.min.js"></script>
+    <!-- 部分安卓机不支持promise -->
+    <script>
+        if(!window.Promise) {
+            document.writeln('<script src="<%= htmlWebpackPlugin.options.path %>/lib/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
+        }
+    </script>
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.path %>/css/common.min.css">
+</head>
+<body>
+<div id="root"></div>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.options.path %>/cordova.js"></script>
+</body>
+</html>

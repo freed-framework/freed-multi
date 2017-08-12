@@ -1,0 +1,75 @@
+/**
+ * @file reset.css
+ * @author lihuanji
+ *
+ * reset css
+ */
+* {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  box-sizing: border-box; }
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Helvetica Neue', Arial, sans-serif; }
+
+input, button, select, textarea {
+  -webkit-appearance: none; }
+
+input, textarea {
+  user-select: text; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+img {
+  border: 0; }
+
+address, caption, cite, code, dfn, em, strong, th, var {
+  font-style: normal;
+  font-weight: normal; }
+
+ol, ul {
+  list-style: none; }
+
+caption, th {
+  text-align: left; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal; }
+
+body {
+  font-size: 28px; }
+
+b {
+  font-weight: normal; }
+
+em {
+  font-style: normal; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+body {
+  height: 100%;
+  overflow: hidden; }
+
+@charset "UTF-8";
+/**
+ * @file resetAnt.css
+ * @author lihuanji
+ *
+ * 全局覆盖ant css
+ */
+.am-toast-notice-content .am-toast-text {
+  min-width: 200px; }

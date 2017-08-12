@@ -1,0 +1,86 @@
+/**
+ * @file searchNavBar.scss
+ * @author denglingbo
+ *
+ */
+@import '../../style/border-1px';
+
+$topHei: 90px;
+$hei: 60px;
+$bg: #f4f4f4;
+$fontSize: 28px;
+
+/**
+ * 搜索容器为 fixed，内容主容器内部 padding
+ */
+.ym-search-bar-content-layout {
+    padding-top: $topHei;
+}
+
+/**
+ * 搜索容器
+ */
+.search-nav-bar.am-navbar {
+    @include border-1px(bottom, #e1e1e1);
+    height: $topHei;
+    background-color: $bg;
+    color: #000;
+    position: fixed !important;
+    width: 100%;
+    z-index: 100;
+
+    .am-search-input, .am-search-synthetic-ph {
+        height: $hei;
+        line-height: $hei;
+    }
+
+    .am-search {
+        width: 100%;
+        height: $hei;
+        background-color: $bg;
+        padding: 0;
+
+        input[type="search"] {
+            height: $hei;
+            font-size: $fontSize;
+            color: #666;
+        }
+    }
+
+    .am-navbar-title {}
+
+    .am-icon-back {
+        width: 30px;
+    }
+
+    .am-search-cancel {
+        font-size: $fontSize;
+        height: $hei;
+        line-height: $hei;
+        background-color: #ed6f4f;
+        color: #fff;
+        padding: 0 30px;
+        border-radius: 4px;
+        margin-left: 20px;
+    }
+
+    .am-search-clear {
+        width: 32px;
+        height: 32px;
+        top: 50%;
+        margin-top: -16px;
+        margin-right: 10px;
+    }
+
+    .am-navbar-right {
+        flex: 0;
+    }
+
+    .am-navbar-title {
+        flex: 10;
+    }
+
+    .am-navbar-left {
+        padding-left: 20px;
+    }
+}

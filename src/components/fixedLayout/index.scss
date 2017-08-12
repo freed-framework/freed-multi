@@ -1,0 +1,21 @@
+.fixed-layout {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+
+    &-main {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        overflow-y: auto;
+    }
+
+    &-fixer {
+        position: absolute;
+        z-index: 2;
+        bottom: 0;
+    }
+}

@@ -1,0 +1,20 @@
+.ym-boxer {
+    background: #fff;
+
+    &-title {
+        height: 90px;
+        line-height: 90px;
+        padding: 0 30px;
+        font-size: 28px;
+    }
+
+    &-content {
+
+        .am-list {
+            .am-list-content {
+                font-size: 24px !important;
+                color: #686868 !important;
+            }
+        }
+    }
+}

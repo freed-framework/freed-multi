@@ -1,0 +1,118 @@
+@import '../../style/border-1px';
+
+$topHei: 90px;
+
+/**
+ * navbar为 fixed，内容主容器内部 padding
+ */
+.ym-nav-bar-content-layout {
+    padding-top: $topHei;
+}
+
+.container{
+    &.am-navbar{
+        background-color: #fff;
+        color: #000;
+        @include border-1px(bottom, #e1e1e1);
+        position: fixed !important;
+        width: 100%;
+        z-index: 100;
+    }
+    .am-navbar-title{
+        flex: 2;
+    }
+
+    .am-navbar-left-content{
+        height: 100%;
+        display: flex;
+        flex: 1;
+    }
+
+    .am-navbar-title{
+        width: 0;
+    }
+
+    &-title{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+
+        &-question{
+            display: inherit;
+            flex-shrink: 0;
+            align-items: center;
+            height: 100%;
+            padding: 0 10px;
+        }
+    }
+
+    &-disable{
+        color: #bbb;
+    }
+
+    &-left{
+        height: 100%;
+        display: flex;
+        flex: 1;
+
+        span{
+            white-space:nowrap;
+        }
+
+        &-icon{
+            display: inherit;
+        }
+
+        &-back{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+
+            .am-icon-back{
+                width: 30px;
+            }
+        }
+
+        &-close{
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &-right{
+        display: inherit;
+
+        & > :nth-child(2){
+            margin-left: 32px;
+        }
+    }
+
+    &-sup{
+        position: relative;
+        width: 44px;
+        height: 44px;
+
+        &-text{
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            position: absolute;
+            top: -12px;
+            height: 36px;
+            line-height: 36px;
+            min-width: 18px;
+            text-align: center;
+            font-size: 24px;
+            color: #fff;
+            background-color: #ff5b05;
+            white-space: nowrap;
+            transform: translateX(-60%);
+            transform-origin: -10% center 0px;
+            z-index: 10;
+            border-radius: 24px;
+            padding: 0 10px;
+        }
+    }
+}

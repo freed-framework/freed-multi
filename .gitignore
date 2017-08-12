@@ -1,0 +1,8 @@
+.DS_Store
+.vscode
+.idea/
+.bin/
+node_modules/
+dist/
+tsconfig.json
+npm-debug.log

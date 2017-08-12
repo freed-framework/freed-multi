@@ -1,0 +1,12 @@
+/**
+ * @file activeBgColor.scss
+ * @author lihuanji
+ *
+ * 手指按下时的背景色
+ */
+
+@mixin activeBgColor($bgColor: #F3F3F5) {
+    &:active {
+        background-color: $bgColor;
+    }
+}

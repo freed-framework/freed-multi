@@ -1,0 +1,10 @@
+.yt-tags {
+    padding: 0 20px;
+    margin: 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+
+    &-between {
+        justify-content: space-between;
+    }
+}
