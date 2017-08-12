@@ -1,6 +1,6 @@
 {
   "name": "freed-multi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "hybrid build",
   "scripts": {
     "lint": "cross-env ./node_modules/.bin/eslint ./components --ext '.js,.jsx'",
@@ -27,9 +27,7 @@
     "react-lazyload": "^2.2.7",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "whatwg-fetch": "^2.0.3"
-  },
-  "devDependencies": {
+    "whatwg-fetch": "^2.0.3",
     "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
