@@ -1,7 +1,8 @@
 {
   "name": "freed-multi",
-  "version": "1.0.2",
+  "version": "1.0.7",
   "description": "hybrid build",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "cross-env ./node_modules/.bin/eslint ./components --ext '.js,.jsx'",
     "pre-commit": "node ./tool/hooks/pre-commit.js"
@@ -75,5 +76,6 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
-  }
+  },
+  "license": "ISC"
 }
