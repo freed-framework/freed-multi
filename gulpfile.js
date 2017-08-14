@@ -19,7 +19,6 @@ gulp.task('clean', () =>
 
 gulp.task('babel', ['clean'], () =>
     gulp.src([
-        './src/index.js',
         './src/**/*.jsx',
         './src/**/*.js',
     ])

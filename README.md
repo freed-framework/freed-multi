@@ -1,25 +1,33 @@
-# react + mobx + ant-design-mobile
-.
-## 每个页面入口JS:  entry.js(**多页面入口必须为entry**)
-## components封装有nav-bar,search-nav-bar
+# freed-multi
+
+*react + mobx + ant-design-mobile*
+
+## 注意事项
+ 1. 页面入口为entry.js,规则: /src/pages/{页面名字}/entry.js
+ 1. svg图片放在src/svg-folder(icon图标)
+ 1. 边框1px统一使用 style/border-1px.scss
+ 1. 提交前执行eslint <code>npm run lint</code>
+## components
+ - nav-bar
 ```
-    import NavBar, {setTitle} from 'nav-bar';
+    import { NavBar, NavBarContentLayout setTitle } from 'freed-multi';
     
     <NavBar
-        title="test" //此处可传title
+        title="test" // 此处可传title
     />
+    <NavBarContentLayout>
+        // you code
+    </NavBarContentLayout>
     
-    import {setTitle} from 'nav-bar';
+    import { setTitle } from 'freed-multi';
     setTtile('首页');
 ```
-## 原生方法封装在native中
+ - search-nav-bar
+## native(原生插件)
 ```
-    import Native from 'native';
+    import { Native } from 'freed-multi';
+    
     Native.goBack();
 ```
-* svg图片放在src/svg-folder
-* 边框1px统一使用 style/border-1px.scss
-* 提交前执行eslint
-<code>
-    npm run lint
-</code>
+
+
