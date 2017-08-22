@@ -77,5 +77,5 @@ body {
  *
  * 全局覆盖ant css
  */
-.am-toast-notice-content .am-toast-text {
+.am-toast .am-toast-notice-content .am-toast-text {
   min-width: 2rem; }
