@@ -251,7 +251,7 @@ module.exports = (options) => {
                     test: /\.scss/,
                     use: ExtractTextPlugin.extract({
                         fallback: 'style-loader',
-                        use: ['style-loader', { loader: 'postcss-loader', options: postcssOpts }, 'sass-loader'],
+                        use: ['css-loader', { loader: 'postcss-loader', options: postcssOpts }, 'sass-loader'],
                         publicPath: './disk/'
                     })
                 },
@@ -260,7 +260,7 @@ module.exports = (options) => {
                     test: /\.css$/,
                     use: ExtractTextPlugin.extract({
                         fallback: 'style-loader',
-                        use: ['style-loader', { loader: 'postcss-loader', options: postcssOpts }],
+                        use: ['css-loader', { loader: 'postcss-loader', options: postcssOpts }],
                         publicPath: './disk/'
                     })
                 },

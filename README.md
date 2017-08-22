@@ -9,6 +9,7 @@
  1. 字体不能小于24px(设计图750)
  1. 代码书写规范 [Airbnb](https://github.com/airbnb/javascript/tree/master/react)
  1. 提交前执行eslint <code>npm run lint</code>
+ 1. import顺序 react > ant-mobile > mobx > 第三方库 > freed-multi > components > scss > svg
 ## components
  - nav-bar
 ```

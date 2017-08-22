@@ -36,7 +36,7 @@ const exFiles = ['common/'];
 log.info('Linting code, please waiting...');
 
 const isExclude = (path) => {
-    const arr = ['^common/', 'mock/', 'tool/', 'demo/'];
+    const arr = ['^common/', 'mock/', 'tool/', 'demo/', 'lib/'];
 
     let ex = false;
 

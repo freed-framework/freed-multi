@@ -7,8 +7,8 @@
 
 import 'whatwg-fetch'; // https://github.com/github/fetch
 import { Toast, Modal } from 'antd-mobile';
-import Native from '../native';
-import { util, isMobile } from '../../components';
+import Native from '../../native';
+import { util, isMobile } from '../../index';
 
 let loading = null;
 let errorAlert = null;
@@ -22,7 +22,7 @@ function createLoading(url) {
             loading = true;
         }
     }
-    return function () {
+    return () => {
         if (requestingList.indexOf(url) > -1) {
             requestingList.splice(requestingList.indexOf(url), 1);
         }
@@ -141,22 +141,21 @@ export default class http {
         if (!noloading) {
             closeLoading = createLoading(url);
         }
-        query[`b${new Date().getTime()}`] = 1;
-        let queryString = util.parseQuerystring(query);
-        url = url.indexOf('?') > 0
-            ? encodeURI(url) + '&' + queryString
-            : encodeURI(url) + '?' + queryString;
+        const urlQuery = query;
+        urlQuery[`b${new Date().getTime()}`] = 1;
+        const queryString = util.parseQuerystring(urlQuery);
+        let sendUrl = `${encodeURI(url)}${url.indexOf('?') > 0 ? '&' : '?'}${queryString}`;
         return new Promise((resolve, reject) => {
             // 安卓需要加上http:// 原生才能拦截
             if (isMobile.android.phone) {
-                url = `http://${window.location.host}${url}`;
+                sendUrl = `http://${window.location.host}${sendUrl}`;
             }
-            fetch(url, {
+            fetch(sendUrl, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'token': true,
+                    Accept: 'application/json',
+                    token: true,
                 }
             })
                 .then((response) => {
@@ -202,22 +201,23 @@ export default class http {
         if (!noloading) {
             closeLoading = createLoading(url);
         }
+        let sendUrl = url;
         return new Promise((resolve, reject) => {
             // 安卓需要加上http:// 原生才能拦截  postBody为原生拦截参数
             if (isMobile.android.phone) {
-                url = `http://${window.location.host}${url}?postBody=${JSON.stringify(options)}`;
+                sendUrl = `http://${window.location.host}${url}?postBody=${JSON.stringify(options)}`;
             }
 
             // 如果是苹果ios post带上postBody
             if (isMobile.apple.phone) {
-                url = `${url}?postBody=${JSON.stringify(options)}`;
+                sendUrl = `${sendUrl}?postBody=${JSON.stringify(options)}`;
             }
-            fetch(url, {
+            fetch(sendUrl, {
                 method: 'POST',
                 headers: {
-                    'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'token': true,
+                    Accept: 'application/json',
+                    token: true,
                 },
                 body: JSON.stringify(options)
             })
