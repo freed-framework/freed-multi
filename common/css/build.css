@@ -9,6 +9,9 @@
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   box-sizing: border-box; }
 
@@ -22,6 +25,9 @@ input, button, select, textarea {
   -webkit-appearance: none; }
 
 input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
   user-select: text; }
 
 table {
@@ -46,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal; }
 
 body {
-  font-size: 28px; }
+  font-size: 0.28rem; }
 
 b {
   font-weight: normal; }
@@ -72,4 +78,4 @@ body {
  * 全局覆盖ant css
  */
 .am-toast-notice-content .am-toast-text {
-  min-width: 200px; }
+  min-width: 2rem; }
