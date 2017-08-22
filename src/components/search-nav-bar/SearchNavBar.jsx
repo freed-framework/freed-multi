@@ -9,7 +9,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { NavBar, SearchBar } from 'antd-mobile';
 import classnames from 'classnames';
-import Native from 'src/native';
+import Native from '../../native';
 import back from './back.svg';
 
 /**

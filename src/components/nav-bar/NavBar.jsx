@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { NavBar, Icon } from 'antd-mobile';
 import mitt from 'mitt';
 import classnames from 'classnames';
-import Native from 'src/native';
+import Native from '../../native';
 import './navBar.scss';
 import back from '../search-nav-bar/back.svg';
 
