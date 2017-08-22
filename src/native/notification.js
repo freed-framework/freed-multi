@@ -17,7 +17,8 @@ import deviceready from './deviceready';
  * @param {object} data 传递数据
  */
 const emit = (key, data) => {
-    deviceready.then(() => window.YTNotification.emit(key, typeof data === 'string' ? data : JSON.stringify(data)));
+    const info = data || '';
+    deviceready.then(() => window.YTNotification.emit(key, typeof info === 'string' ? info : JSON.stringify(info)));
 };
 
 /**

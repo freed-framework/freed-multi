@@ -22,6 +22,14 @@ $topHei: 90px;
         flex: 2;
     }
 
+    .am-navbar-left{
+        padding-left: 0;
+    }
+
+    .am-navbar-right{
+        margin-right: 0;
+    }
+
     .am-navbar-left-content{
         height: 100%;
         display: flex;
@@ -67,8 +75,10 @@ $topHei: 90px;
         &-back{
             height: 100%;
             display: flex;
+            flex: 1;
             align-items: center;
             margin-right: 20px;
+            padding-left: 0.3rem;
 
             .am-icon-back{
                 width: 30px;
@@ -84,6 +94,7 @@ $topHei: 90px;
 
     &-right{
         display: inherit;
+        padding-right: 30px;
 
         & > :nth-child(2){
             margin-left: 32px;

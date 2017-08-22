@@ -6,6 +6,8 @@
  1. 页面入口为entry.js,规则: /src/pages/{页面名字}/entry.js
  1. svg图片放在src/svg-folder(icon图标)
  1. 边框1px统一使用 style/border-1px.scss
+ 1. 字体不能小于24px(设计图750)
+ 1. 代码书写规范 [Airbnb](https://github.com/airbnb/javascript/tree/master/react)
  1. 提交前执行eslint <code>npm run lint</code>
 ## components
  - nav-bar

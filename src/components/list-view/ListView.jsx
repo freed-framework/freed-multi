@@ -82,7 +82,7 @@ class ListViewComponent extends PureComponent {
 
         this.state = {
             list: ds.cloneWithRows(this.rData),
-            isLoading: true,
+            isLoading: false,
             hasMore: true,
             refreshing: false,
             isActiveRefresh: false,
@@ -93,6 +93,7 @@ class ListViewComponent extends PureComponent {
         this.renderRow = this.renderRow.bind(this);
         this.onRefresh = this.onRefresh.bind(this);
         this.activeRefresh = this.activeRefresh.bind(this);
+        this.onScroll = this.onScroll.bind(this);
     }
 
     componentDidMount() {
@@ -101,8 +102,13 @@ class ListViewComponent extends PureComponent {
         emitter.on('listen', promiseFunc => this.activeRefresh(promiseFunc));
     }
 
+    onScroll(e) {
+        forceCheck();
+        this.props.onScroll(e);
+    }
+
     onEndReached() {
-        if (!this.state.isLoading && !this.state.hasMore) {
+        if (!this.state.hasMore) {
             return;
         }
 
@@ -117,26 +123,35 @@ class ListViewComponent extends PureComponent {
         this.setState({ refreshing: true });
 
         this.props.getRefreshDataFunc().then((data) => {
+            this.rData = data.data;
+
             this.setState({
-                list: this.state.list.cloneWithRows(data),
+                list: this.state.list.cloneWithRows(this.rData),
                 refreshing: false,
             });
         })
     }
 
     getListData() {
+        if (this.state.isLoading) {
+            return;
+        }
+
         if (this.state.isActiveRefresh) {
             return;
         }
 
-        this.setState({isLoading: true});
+        this.setState({
+            isLoading: true
+        }, () => {
+            this.props.getMoreDataFunc().then((data) => {
+                this.rData = this.rData.concat(data.data);
 
-        this.props.getMoreDataFunc().then((data) => {
-            this.rData = [...this.rData, ...data.data];
-            this.setState({
-                list: this.state.list.cloneWithRows(this.rData),
-                isLoading: false,
-                hasMore: data.hasMore
+                this.setState({
+                    list: this.state.list.cloneWithRows(this.rData),
+                    isLoading: false,
+                    hasMore: data.hasMore
+                });
             });
         });
     }
@@ -148,21 +163,27 @@ class ListViewComponent extends PureComponent {
      * @param promiseFunc
      */
     activeRefresh(promiseFunc) {
+        if (this.state.isLoading) {
+            return;
+        }
+
         this.setState({
             isLoading: true,
             isActiveRefresh: true,
             hasMore: true,
             list: this.state.list.cloneWithRows([]),
-        });
+        }, () => {
+            promiseFunc().then((data) => {
+                this.rData = data.data;
 
-        promiseFunc().then((data) => {
-            this.setState({
-                list: this.state.list.cloneWithRows(data.data),
-                isLoading: false,
-                hasMore: data.hasMore,
-                isActiveRefresh: false
-            });
-        })
+                this.setState({
+                    list: this.state.list.cloneWithRows(data.data),
+                    isLoading: false,
+                    hasMore: data.hasMore,
+                    isActiveRefresh: false
+                });
+            })
+        });
     }
 
     renderRow(rowData) {
@@ -171,24 +192,20 @@ class ListViewComponent extends PureComponent {
 
     render() {
         const { list, hasMore, isLoading } = this.state;
-        const { id, className, isLoadMore, isRefresh, onScroll, noMoreText } = this.props;
+        const { id, className, isLoadMore, isRefresh, noMoreText } = this.props;
         const refresh = {};
+
+        refresh.scrollerOptions = {
+            scrollbars: true,
+        };
+
+        refresh.useZscroller = true;
 
         if (isRefresh) {
             refresh.refreshControl = (<RefreshControl
                 refreshing={this.state.refreshing}
                 onRefresh={this.onRefresh}
             />);
-
-            refresh.scrollerOptions = {
-                scrollbars: true,
-                onScroll: () => {
-                    forceCheck();
-                    onScroll();
-                }
-            };
-
-            refresh.useZscroller = true;
         }
 
         return (
@@ -221,11 +238,11 @@ class ListViewComponent extends PureComponent {
                         overflow: 'auto',
                     }}
                     scrollRenderAheadDistance={500}
-                    onEndReachedThreshold={30}
+                    onEndReachedThreshold={100}
                     renderRow={this.renderRow}
                     onEndReached={isLoadMore ? this.onEndReached : () => {}}
-                    pageSize={4}
-                    onScroll={onScroll}
+                    pageSize={10}
+                    onScroll={this.onScroll}
                     {...refresh}
                 />
             </div>

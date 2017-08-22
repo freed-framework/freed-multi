@@ -7,10 +7,11 @@
 
 import 'whatwg-fetch'; // https://github.com/github/fetch
 import { Toast, Modal } from 'antd-mobile';
-import Native from 'src/native/index';
-import { util, isMobile } from '../../components/index';
+import Native from '../native';
+import { util, isMobile } from '../../components';
 
 let loading = null;
+let errorAlert = null;
 const requestingList = [];
 
 function createLoading(url) {
@@ -67,14 +68,18 @@ function handleResult(data, resolve, reject, onError) {
 function handleError(error) {
     switch (error) {
         case 401:
-            Modal.alert('', '登录超时,请重新登录.', [
-                {
-                    text: '重新登录',
-                    onPress: () => {
-                        Native.handleError('401');
+            if (!errorAlert) {
+                Modal.alert('', '登录超时,请重新登录.', [
+                    {
+                        text: '重新登录',
+                        onPress: () => {
+                            Native.handleError('401');
+                        }
                     }
-                }
-            ]);
+                ]);
+
+                errorAlert = true;
+            }
             break;
         case 404:
             Toast.info('404');
@@ -175,7 +180,7 @@ export default class http {
                 .catch((error) => {
                     closeLoading();
                     if (this.error(error)) {
-                        handleError(err, reject);
+                        handleError(error, reject);
                     }
                 })
         })
@@ -237,7 +242,7 @@ export default class http {
                 .catch((error) => {
                     closeLoading();
                     if (this.error(error)) {
-                        handleError(err, reject);
+                        handleError(error, reject);
                     }
                 })
         })

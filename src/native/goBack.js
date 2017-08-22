@@ -14,10 +14,7 @@ import deviceready from './deviceready';
  */
 export default (data) => {
     deviceready.then(() => {
-        let info = null;
-        if (data) {
-            info = typeof data === 'string' ? data : JSON.stringify(data);
-        }
-        window.YTNavigation.goBack(info);
+        const info = data || '';
+        window.YTNavigation.goBack(typeof info === 'string' ? info : JSON.stringify(info));
     });
 };

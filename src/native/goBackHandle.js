@@ -11,7 +11,7 @@
  * @param {Function} callback 点击回调
  * @param {boolean}  isIntercept 是否监听
  */
-export default (callback, isIntercept) => {
+export default (callback, isIntercept = true) => {
     if (!(/(iphone|ipad)/i).test(navigator.appVersion) && isIntercept) {
         document.addEventListener('backbutton', callback, false);
     }

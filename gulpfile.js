@@ -31,8 +31,8 @@ gulp.task('babel', ['clean'], () =>
 
 gulp.task('styles', () => {
     gulp.src([
-        './common/style/**/*.css',
-        './common/style/**/*.scss'
+        './style/**/*.css',
+        './style/**/*.scss'
     ])
         .pipe(sass())
         .pipe(concat('build.css'))
