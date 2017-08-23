@@ -12,10 +12,10 @@
  1. import顺序 react > ant-mobile > mobx > 第三方库 > freed-multi > components > scss > svg
  1. html rootdiv height为100% 如需滑动内部处理，不使用webview自带滑动
 ## components
- - nav-bar
- - 
+ - NavBar
+ 
 ```
-    import { NavBar, NavBarContentLayout setTitle } from 'freed-multi';
+    import { NavBar, NavBarContentLayout, setTitle } from 'freed-multi';
     
     <NavBar
         title="test" // 此处可传title
@@ -27,7 +27,13 @@
     import { setTitle } from 'freed-multi';
     setTtile('首页');
 ```
- - search-nav-bar
+ - SearchNavBar
+ - Boxer
+ - FixedLayout
+ - ListView
+ - Tags
+ - WhiteAll
+ - LazyLoad
 ## native(原生插件)
  - redirect(url, options) 跳转webview
 
@@ -183,3 +189,10 @@
    
      @include ellipsis(${可传入行数});
  ```
+ ## utils 
+  - http
+  - LocalStore
+  - isMobile
+  - util
+    - parseQuerystring(object) 转换url参数
+    - getQueryString(key, isDecode) 获取url上参数 isDecode->是否转码

@@ -212,21 +212,21 @@ class NavBarComponent extends PureComponent {
             if (/^(#)/.test(v.icon) || v.antType) {
                 let icon = (<Icon
                     key={i}
-                    className={v.disable && 'container-disable'}
+                    className={v.disable && 'navbar-disable'}
                     type={v.antType || v.icon}
                     onClick={!v.disable && v.click}
                 />);
                 if (v.sup) {
                     icon = (
                         <span
-                            className={classnames('container-sup', {'container-disable': v.disable})}
+                            className={classnames('navbar-sup', {'navbar-disable': v.disable})}
                             onClick={!v.disable && v.click}
                         >
                             <Icon
                                 key={i}
                                 type={v.antType || v.icon}
                             />
-                            <sup className="container-sup-text">{v.sup > 99 ? '99+' : v.sup}</sup>
+                            <sup className="navbar-sup-text">{v.sup > 99 ? '99+' : v.sup}</sup>
                         </span>
                     );
                 }
@@ -235,7 +235,7 @@ class NavBarComponent extends PureComponent {
                 buttonArray.push(
                     <span
                         key={i}
-                        className={v.disable && 'container-disable'}
+                        className={v.disable && 'navbar-disable'}
                         onClick={!v.disable && v.click}
                     >
                         {v.icon}
@@ -299,20 +299,20 @@ class NavBarComponent extends PureComponent {
         if (titleContent === 'none') {
             titleContent = '';
         } else if (!titleContent) {
-            titleContent = <span className="container-left-icon"><Icon type={back} size="xs" /></span>;
+            titleContent = <span className="navbar-left-icon"><Icon type={back} size="xs" /></span>;
         }
 
         return (
             <NavBar
-                className={classnames('container', className)}
+                className={classnames('navbar', className)}
                 iconName={null}
                 leftContent={[
                     <div
                         key="leftButton"
-                        className="container-left"
+                        className="navbar-left"
                     >
                         <span
-                            className={`${leftDisable && 'container-disable'} container-left-back`}
+                            className={`${leftDisable && 'navbar-disable'} navbar-left-back`}
                             onClick={!leftDisable && leftButtonTitle !== 'none' && this.handleGoBack}
                         >
                             {titleContent}
@@ -320,7 +320,7 @@ class NavBarComponent extends PureComponent {
                         {
                             showClose &&
                             <span
-                                className="container-left-close"
+                                className="navbar-left-close"
                                 onClick={this.handleClose}
                             >
                                     关闭
@@ -330,18 +330,18 @@ class NavBarComponent extends PureComponent {
                     </div>
                 ]}
                 rightContent={
-                    <span className="container-right">
+                    <span className="navbar-right">
                         {[
                             this.getRightButton()
                         ]}
                     </span>
                 }
             >
-                <span className="container-title">{title}</span>
+                <span className="navbar-title">{title}</span>
                 {
                     helpClick &&
                     <span
-                        className="container-title-question"
+                        className="navbar-title-question"
                         onClick={helpClick}
                     >
                         <Icon type="question-circle" />

@@ -13,6 +13,7 @@ export { default as Native } from './native';
 export { default as Tags } from './components/tags';
 export { default as Tag } from './components/tags/Tag';
 export { default as Boxer } from './components/boxer';
+export { default as FixedLayout } from './components/fixedLayout';
 export { default as WhiteAll } from './components/whiteAll';
 export { default as ListView, activeRefresh } from './components/list-view';
 export { default as SearchNavBar, SearchBarContentLayout } from './components/search-nav-bar';
