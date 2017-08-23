@@ -313,7 +313,7 @@ class NavBarComponent extends PureComponent {
                     >
                         <span
                             className={`${leftDisable && 'container-disable'} container-left-back`}
-                            onClick={!leftDisable && this.handleGoBack}
+                            onClick={!leftDisable && leftButtonTitle !== 'none' && this.handleGoBack}
                         >
                             {titleContent}
                         </span>
@@ -361,13 +361,18 @@ export default NavBarComponent;
  * @constructor
  */
 export const NavBarContentLayout = (props) => (
-    <div className="ym-nav-bar-content-layout">
+    <div className={classnames('ym-nav-bar-content-layout', props.className)}>
         {props.children}
     </div>
 );
 
 NavBarContentLayout.propTypes = {
+    className: PropTypes.string,
     children: PropTypes.node.isRequired,
+};
+
+NavBarContentLayout.defaultProps = {
+    className: ''
 };
 
 /**

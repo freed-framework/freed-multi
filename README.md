@@ -40,7 +40,7 @@
     @include border-1px(bottom, #e1e1e1);
 ```
  - 手指按下时的背景色
-  - 默认#F3F3F5
+   - 默认#F3F3F5
  ```
      @import '~freed-multi/lib/style/activeBgColor';
     

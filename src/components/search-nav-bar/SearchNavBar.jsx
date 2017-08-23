@@ -18,14 +18,19 @@ import back from './back.svg';
  * @constructor
  */
 export const SearchBarContentLayout = (props) => (
-    <div className="ym-search-bar-content-layout">
+    <div className={classnames('ym-search-bar-content-layout', props.className)}>
         {props.children}
     </div>
-)
+);
 
 SearchBarContentLayout.propTypes = {
+    className: PropTypes.string,
     children: PropTypes.node.isRequired,
-}
+};
+
+SearchBarContentLayout.defaultProps = {
+    className: ''
+};
 
 class SearchNavBar extends PureComponent {
     static propTypes = {
