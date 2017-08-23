@@ -23,7 +23,7 @@ const isProduct = process.env.NODE_ENV;
 const ROOT_PATH = process.cwd();
 
 // 项目源码路径
-const SRC_PATH = ROOT_PATH + '/src/pages';
+const SRC_PATH = `${ROOT_PATH}/src/pages`;
 
 /**
  *  获取入口名字
@@ -44,9 +44,9 @@ function getEntryName(filePath) {
 
     if (/^(index)$/.test(folderName)) {
         return folderName;
-    } else {
-        return `${folderName}/index`;
     }
+
+    return `${folderName}/index`;
 }
 
 /**
@@ -63,7 +63,6 @@ function getPager(srcDir) {
     const templates = glob.sync(srcDir + '/**/entry.js');
 
     templates.forEach((filePath) => {
-
         // 获取文件夹名字
         const entryName = getEntryName(filePath);
 
@@ -111,8 +110,8 @@ function getPager(srcDir) {
     });
 
     return {
-        htmlPlugins: htmlPlugins,
-        jsEntries: jsEntries
+        htmlPlugins,
+        jsEntries
     };
 }
 
@@ -196,7 +195,7 @@ module.exports = (options) => {
 
     const webpackConfig = {
         entry: entryPoints,
-        output: output,
+        output,
         resolve: {
             modules: [
                 path.resolve(ROOT_PATH, './node_modules'),
@@ -233,12 +232,10 @@ module.exports = (options) => {
             // 提取所有打包后 js 入口文件中的公共部分
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'common',
-                minChunks: 2,
-                chunks: Object.keys(entryPoints).filter(key => key !== "vendor")
+                chunks: Object.keys(entryPoints).filter(key => key !== 'vendor')
             }),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor',
-                minChunks: Infinity
             }),
             new UglifyJSPlugin({
                 compress: isProduct
@@ -249,7 +246,7 @@ module.exports = (options) => {
                 // js
                 {
                     test: /\.jsx?$/,
-                    exclude:/node_modules/,
+                    exclude: /node_modules/,
                     use: ['babel-loader']
                 },
                 // sass
