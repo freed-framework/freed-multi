@@ -240,7 +240,9 @@ module.exports = (options) => {
                 minChunks: Infinity
             }),
             new UglifyJSPlugin({
-                compress: isProduct
+                uglifyOptions: {
+                    compress: isProduct
+                }
             }),
         ].concat(pages.htmlPlugins),
         module: {
