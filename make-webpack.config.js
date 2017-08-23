@@ -17,7 +17,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 // 是否生产环境
-const isProduct = process.env.NODE_ENV;
+const isProduct = process.env.NODE_ENV === 'production';
 
 // 项目路径
 const ROOT_PATH = process.cwd();
@@ -232,10 +232,12 @@ module.exports = (options) => {
             // 提取所有打包后 js 入口文件中的公共部分
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'common',
+                minChunks: 2,
                 chunks: Object.keys(entryPoints).filter(key => key !== 'vendor')
             }),
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor',
+                minChunks: Infinity
             }),
             new UglifyJSPlugin({
                 compress: isProduct

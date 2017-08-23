@@ -1,6 +1,6 @@
 {
   "name": "freed-multi",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "hybrid build",
   "main": "lib/index.js",
   "scripts": {
@@ -73,7 +73,7 @@
     "style-loader": "^0.18.2",
     "svg-sprite-loader": "0.3.x",
     "svgo-loader": "^1.2.1",
-    "uglifyjs-webpack-plugin": "^0.4.6",
+    "uglifyjs-webpack-plugin": "^1.0.0-beta.2",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.5.0",
