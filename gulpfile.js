@@ -50,10 +50,10 @@ gulp.task('styles', () => {
             })
         ]))
         .pipe(sass())
-        .pipe(concat('build.css'))
+        .pipe(concat('global.css'))
         .pipe(gulp.dest('./common/css'))
         .pipe(minifyCss())
-        .pipe(concat('common.min.css'))
+        .pipe(concat('global.min.css'))
         .pipe(gulp.dest('./common/css'));
 });
 
