@@ -57,24 +57,7 @@
             ]
         }
     ],
-    "react/no-array-index-key": "warn",
-    "import/no-unresolved": [
-        2,
-        {
-            "ignore": [
-                "native",
-                "nav-bar",
-                "yt-mobile"
-            ]
-        }
-    ],
-    "import/extensions": [
-        2,
-        {
-            "native": "never",
-            "nav-bar": "never"
-        }
-    ]
+    "react/no-array-index-key": "warn"
   },
   "globals": {
     "__PRO__": true,

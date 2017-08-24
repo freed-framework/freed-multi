@@ -14,7 +14,6 @@ const pxtorem = require('postcss-pxtorem');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 // 项目路径
 const ROOT_PATH = process.cwd();
@@ -235,13 +234,6 @@ module.exports = (options) => {
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor',
                 minChunks: Infinity
-            }),
-            new UglifyJSPlugin({
-                uglifyOptions: {
-                    // todo  https://github.com/webpack/webpack/issues/5107
-                    compress: false
-                    // compress: options.production
-                }
             }),
         ].concat(pages.htmlPlugins),
         module: {
