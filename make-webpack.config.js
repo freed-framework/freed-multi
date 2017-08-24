@@ -16,9 +16,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-// 是否生产环境
-const isProduct = process.env.NODE_ENV === 'production';
-
 // 项目路径
 const ROOT_PATH = process.cwd();
 
@@ -151,8 +148,8 @@ module.exports = (options) => {
     // 输出目录
     const output = {
         path: path.resolve(ROOT_PATH, './dist/'),
-        filename: isProduct ? '[name].min.js' : '[name].js',
-        chunkFilename: isProduct ? 'chunk.min.js' : 'chunk.js',
+        filename: options.production ? '[name].min.js' : '[name].js',
+        chunkFilename: options.production ? 'chunk.min.js' : 'chunk.js',
     };
 
     // rem + css前缀
@@ -211,7 +208,7 @@ module.exports = (options) => {
         plugins: [
             // 提取样式组件
             new ExtractTextPlugin({
-                filename: isProduct ? '[name].min.css' : '[name].css',
+                filename: options.production ? '[name].min.css' : '[name].css',
                 disable: false,
                 allChunks: true
             }),
@@ -241,7 +238,9 @@ module.exports = (options) => {
             }),
             new UglifyJSPlugin({
                 uglifyOptions: {
-                    compress: isProduct
+                    // todo  https://github.com/webpack/webpack/issues/5107
+                    compress: false
+                    // compress: options.production
                 }
             }),
         ].concat(pages.htmlPlugins),
@@ -310,7 +309,7 @@ module.exports = (options) => {
         }
     };
 
-    if (!options.production && !isProduct) {
+    if (!options.production) {
         webpackConfig.plugins.push(new CopyWebpackPlugin([{
             from: path.resolve(__dirname, './tool/simulate/cordova.js'),
             to: path.resolve(ROOT_PATH, './dist/cordova.js')
