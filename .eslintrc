@@ -48,6 +48,7 @@
     "import/prefer-default-export": 0,
     "no-console": 2,
     "no-alert": 2,
+    "jsx-a11y/href-no-hash": 0,
     "react/jsx-filename-extension": [
         "error",
         {
