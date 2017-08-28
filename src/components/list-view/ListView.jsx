@@ -128,6 +128,7 @@ class ListViewComponent extends PureComponent {
             this.setState({
                 list: this.state.list.cloneWithRows(this.rData),
                 refreshing: false,
+                hasMore: data.hasMore
             });
         })
     }
