@@ -308,5 +308,12 @@ module.exports = (options) => {
         }]));
     }
 
+    if (options.production) {
+        webpackConfig.plugins.push(new CopyWebpackPlugin([{
+            from: path.resolve(ROOT_PATH, './src/configPage.json'),
+            to: path.resolve(ROOT_PATH, './dist/configPage.json')
+        }]));
+    }
+
     return webpackConfig;
 };

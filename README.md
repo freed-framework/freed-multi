@@ -11,6 +11,7 @@
  1. 提交前执行eslint <code>npm run lint</code>
  1. import顺序 react > ant-mobile > mobx > 第三方库 > freed-multi > components > scss > svg
  1. html rootdiv height为100% 如需滑动内部处理，不使用webview自带滑动
+ 1. 需要添加configPage.json文件在 src/ 下，用于原生读取落地页 <code>{"list": "list/index.html"}</code>
 ## components
  - NavBar
  
