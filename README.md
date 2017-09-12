@@ -4,6 +4,7 @@
 
 ## 注意事项
  1. 页面入口为entry.js,规则: /src/pages/{页面名字}/entry.js
+ 1. 统一使用flex布局。尽量少用float
  1. svg图片放在src/svg-folder(icon图标)
  1. 边框1px统一使用 ~freed-multi/lib/style/border-1px.scss
  1. 字体不能小于24px(设计图750)
