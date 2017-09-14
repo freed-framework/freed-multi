@@ -77,7 +77,5 @@ body {
  *
  * 全局覆盖ant css
  */
-.am-toast {
-  background-color: rgba(0, 0, 0, 0.2); }
-  .am-toast .am-toast-notice-content .am-toast-text {
-    min-width: 2rem; }
+.am-toast .am-toast-notice-content .am-toast-text {
+  min-width: 2rem; }
