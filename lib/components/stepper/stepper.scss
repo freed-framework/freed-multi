@@ -1,0 +1,46 @@
+@import '~freed-multi/lib/style/border-1px';
+@import '~freed-multi/lib/style/activeBgColor';
+
+.stepper{
+    display: flex;
+    width: 185px;
+    @include border-1px(all, #D9D9D9);
+
+    &-button{
+        width: 50px;
+        height: 50px;
+        background-color: #F8F8F8;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include activeBgColor();
+
+        &.disable{
+            opacity: 0.3;
+        }
+    }
+
+    & &-icon{
+        width: 21px;
+    }
+
+    &-add{
+        @include border-1px(left, #D9D9D9);
+    }
+
+    &-cut{
+        @include border-1px(right, #D9D9D9);
+    }
+
+    &-put{
+
+        input{
+            width: 85px;
+            height: 50px;
+            text-align: center;
+            outline: none;
+            border: 0;
+        }
+    }
+}

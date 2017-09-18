@@ -53,6 +53,7 @@ function handleResult(data, resolve, reject, onError) {
                 onError(data, status);
             } else {
                 Toast.info(typeof data.message === 'string' ? data.message : '服务器错误');
+                reject(data);
             }
             break;
     }

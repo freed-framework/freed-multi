@@ -1,6 +1,6 @@
 {
   "name": "freed-multi",
-  "version": "1.3.8",
+  "version": "1.4.0",
   "description": "hybrid build",
   "main": "lib/index.js",
   "scripts": {
