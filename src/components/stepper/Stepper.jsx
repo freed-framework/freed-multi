@@ -51,10 +51,12 @@ class Stepper extends PureComponent {
     constructor(props) {
         super(props);
 
+        const value = props.value || props.min || 1;
+
         this.state = {
-            num: props.value || 1,
-            disableAddButton: props.value === props.max,
-            disableCutButton: props.value === props.min
+            num: value,
+            disableAddButton: props.max && value === props.max,
+            disableCutButton: value === props.min
         };
 
         // 存储高度，用户判读是否需要滑动视图
