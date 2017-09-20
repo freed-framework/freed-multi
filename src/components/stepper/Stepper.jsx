@@ -70,7 +70,7 @@ class Stepper extends PureComponent {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props !== nextProps) {
+        if (this.props !== nextProps && nextProps.value) {
             this.setState({
                 num: nextProps.value,
                 disableAddButton: nextProps.value === nextProps.max,
