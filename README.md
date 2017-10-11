@@ -29,13 +29,163 @@
     import { setTitle } from 'freed-multi';
     setTtile('首页');
 ```
+
+| 参数             | 说明           | 类型       | 是否必须  |  可选值        | 默认值       |
+|---------------- |----------------|----------|----------|--------------|---------
+| title       | 页面标题 | string |  否  |   | '' |
+| leftButtonClick       | 左侧按钮文字 | string |  否  |   | < |
+| leftButtonClick       | 返回按钮点击前回调 | function |  否  |   | ()=>{} |
+| leftDisable       | 返回按钮禁用状态 | boolean |  否  |   | false |
+| helpClick       | 帮助按钮点击,不传则不显示 | function |  否  |   |  |
+| showClose       | 关闭按钮是否显示 | boolean |  否  |   | false |
+| rightButton | 左侧按钮数组 | object |  否 | | |
+
+rightButton
+
+| 属性             | 说明           | 类型       | 是否必须  |  可选值        | 默认值       |
+|---------------- |----------------|----------|----------|--------------|---------
+| icon       | icon图标或文字 icon图标 import SVG 和ant icon组件使用方法一致 | string |  是  |   |  |
+| antType       | ant提供的icon 传入type | string |  否  |   |  |
+| click       | 点击函数 | function |  否  |   | ()=>{} |
+| disable       | 是否禁用 | boolean |  否  |   | false |
+| sup       | 显示icon右上角数字 | number |  否  |   |  |
+| key       | 用于修改, 根据key更改button | string |  否  |   |  |
+
  - SearchNavBar
+ ```
+     import { SearchNavBar, SearchBarContentLayout } from 'freed-multi';
+     
+     <SearchNavBar
+         defaultValue="test"
+     />
+     <SearchBarContentLayout>
+         // you code
+     </SearchBarContentLayout>
+ ```
+ | 参数             | 说明           | 类型       | 是否必须  |  可选值        | 默认值       |
+ |---------------- |----------------|----------|----------|--------------|---------
+ | defaultValue       | 默认显示搜索值 | string |  否  |   | '' |
+ | placeholder       | placeholder | string |  否  |   | '' |
+ | onSubmit       | 点击搜索 | function |  否  |   | ()=>{} |
+ | onClear       | 点击清除 | function |  否  |   | ()=>{} |
+ | onFocus       | 获取焦点 | function |  否  |   | ()=>{} |
+ | onBlur       | 失去焦点 | function |  否  |   | ()=>{} |
+ | isChangeDefaultValue       | 是否需要重新传入defaultValue 改变当前值 | boolean |  否  |   | false |
+ 
  - Boxer
+```
+  import { Boxer } from 'freed-multi';
+  
+  <Boxer
+      title="test"
+  >
+        // you code
+  </Boxer>
+```
  - FixedLayout
+```
+   import { FixedLayout } from 'freed-multi';
+   
+   <FixedLayout 
+        content={<div>test</div>}
+        fixer={<div>底部定位容器</div>}
+   />
+```
+ | 参数             | 说明           | 类型       | 是否必须  |  可选值        | 默认值       |
+ |---------------- |----------------|----------|----------|--------------|---------
+ | content       | 内容区域 | react node |  否  |   | '' |
+ | fixer       | 定位区域 | react node |  否  |   | '' |
  - ListView
+ ```
+    import { ListView, activeRefresh } from 'freed-multi';
+    
+    componentDidMount() {
+        // 设置listview高度...
+        const listView = window.document.getElementById('test-list');
+
+        listView.style.height = {计算出页面剩余高度};
+    }
+    
+    getMoreData() {
+        return new Promise((resolve) => {
+            http.get('ttttt').then(res => {
+                resolve({
+                    data: {需要渲染的数据, Array}
+                    hasMore: {是否还有更多数据，boolean}
+                });
+            })
+        })
+    }
+    
+    renderItem(rowData) {
+        return (
+            <div key={rowData.id}>{rowData.text}</div>
+        )
+    }
+    
+    <ListView 
+        id="test-list"
+        renderItemFunc={this.renderItem}
+        getMoreDataFunc={this.getMoreData}
+        getRefreshDataFunc={this.getRefreshData}
+        isLoadMore
+        noMoreText="没有更多商品了~"
+    />
+    
+    // 其他点击事件后刷新listview数据
+    activeRefresh(() => {
+        return new Promise((resolve) => {
+            http.get('ttttt').then(res => {
+                resolve({
+                    data: {需要渲染的数据, Array}
+                    hasMore: {是否还有更多数据，boolean}
+                });
+            })
+        })
+    });
+ ```
+| 参数             | 说明           | 类型       | 是否必须  |  可选值        | 默认值       |
+|---------------- |----------------|----------|----------|--------------|---------
+| id       | dom节点ID 用于设置高度 | string |  否  |   | '' |
+| renderItemFunc       | 渲染列表单个item | function |  是  |   |  |
+| getMoreDataFunc       | 获取数据函数 | function |  是  |   |  |
+| getRefreshDataFunc       | 下拉刷新数据 | function |  否  |   | ()=>{} |
+| isLoadMore       | 是否启用瀑布流(加载更多) | boolean |  否  |   | false |
+| isRefresh       | 是否启用下拉刷新 | boolean |  否  |   | false |
+| onScroll       | 列表滚动事件 | function |  否  |   | ()=>{} |
+| noMoreText       | 没有更多的时候，底部显示文字 | string |  否  |   | 抱歉，没有更多商品啦~ |
  - Tags
+ ```
+    import { Tags, Tag } from 'freed-multi';
+    
+    <Tags>
+        <Tag text="aaaa" onClick={() => {alert('test')}} />
+        <Tag text="bbbb" />
+    </Tags>
+ ```
+ | 参数             | 说明           | 类型       | 是否必须  |  可选值        | 默认值       |
+ |---------------- |----------------|----------|----------|--------------|---------
+ | text       | 显示文字 | string |  否  |   | '' |
+ | onClick       | 点击回调 | function |  否  |   | ()=>{} |
  - WhiteAll
+  ```
+     import { WhiteAll } from 'freed-multi';
+     
+     <WhiteAll>
+         // you code
+     </WhiteAll>
+  ```
  - LazyLoad
+ 基于[react-lazyload](https://github.com/jasonslyvia/react-lazyload)封装，支持传入该组件props
+```
+    import { LazyLoad } from 'freed-multi';
+    
+    <LazyLoad 
+         overflow
+    >
+        <img src="http://www.aaa.com/a.png">
+    </LazyLoad>
+```
 ## native(原生插件)
  - redirect(url, options) 跳转webview
 

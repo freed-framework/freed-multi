@@ -14,19 +14,13 @@ const files = glob.sync('dist/**', { nodir: true });
 
 const hashArray = [];
 
-let i = 0;
-
 files.forEach((v) => {
-    fs.readFile(v, (err, buf) => {
-        hashArray.push({
-            file: v.substr(5),
-            hash: md5(buf)
-        });
+    const file = fs.readFileSync(v);
 
-        i++;
-
-        if (i === files.length) {
-            fs.writeFileSync('./dist/manifest.json', JSON.stringify(hashArray));
-        }
+    hashArray.push({
+        file: v.substr(5),
+        hash: md5(file)
     });
 });
+
+fs.writeFileSync('./dist/manifest.json', JSON.stringify(hashArray));
