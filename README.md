@@ -33,12 +33,12 @@
 | 参数             | 说明           | 类型       | 是否必须  |  可选值        | 默认值       |
 |---------------- |----------------|----------|----------|--------------|---------
 | title       | 页面标题 | string |  否  |   | '' |
-| leftButtonClick       | 左侧按钮文字 | string |  否  |   | < |
+| leftButtonTitle       | 左侧按钮文字 | string |  否  |   | < |
 | leftButtonClick       | 返回按钮点击前回调 | function |  否  |   | ()=>{} |
 | leftDisable       | 返回按钮禁用状态 | boolean |  否  |   | false |
 | helpClick       | 帮助按钮点击,不传则不显示 | function |  否  |   |  |
 | showClose       | 关闭按钮是否显示 | boolean |  否  |   | false |
-| rightButton | 左侧按钮数组 | object |  否 | | |
+| rightButton | 右侧按钮数组 | object |  否 | | |
 
 rightButton
 
