@@ -47,7 +47,27 @@ function getQueryString(key, isDecode = true) {
     return val;
 }
 
+/**
+ * post请求转码参数
+ *
+ * @param {Object} obj
+ * @returns {Object} obj
+ */
+function parsePostQuery(obj) {
+    const result = {};
+    if (obj) {
+        const key = Object.keys(obj);
+
+        key.forEach((k) => {
+            result[k] = encodeURIComponent(obj[k]);
+        });
+    }
+
+    return result;
+}
+
 export default {
     parseQuerystring,
     getQueryString,
+    parsePostQuery,
 };

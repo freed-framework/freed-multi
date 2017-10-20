@@ -205,7 +205,7 @@ export default class http {
         let sendUrl = url;
         return new Promise((resolve, reject) => {
             // 安卓需要编码，不能解析特殊字符
-            const opt = util.parseQuerystring(options);
+            const opt = util.parsePostQuery(options);
 
             // 安卓需要加上http:// 原生才能拦截  postBody为原生拦截参数
             if (isMobile.android.phone) {
