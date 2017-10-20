@@ -6,3 +6,4 @@ node_modules/
 dist/
 tsconfig.json
 npm-debug.log
+_site
