@@ -206,9 +206,12 @@ export default class http {
         return new Promise((resolve, reject) => {
             // 安卓需要加上http:// 原生才能拦截  postBody为原生拦截参数
             if (isMobile.android.phone) {
-                const opt = JSON.stringify(options);
+                let opt = JSON.stringify(options);
                 // 安卓特殊处理 %
-                sendUrl = `http://${window.location.host}${url}?postBody=${opt.replace('%', '%25')}`;
+                if (typeof opt === 'string') {
+                    opt = opt.replace('%', '%25')
+                }
+                sendUrl = `http://${window.location.host}${url}?postBody=${opt}`;
             }
 
             // 如果是苹果ios post带上postBody
