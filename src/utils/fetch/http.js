@@ -204,12 +204,11 @@ export default class http {
         }
         let sendUrl = url;
         return new Promise((resolve, reject) => {
-            // 安卓需要编码，不能解析特殊字符
-            const opt = util.parsePostQuery(options);
-
             // 安卓需要加上http:// 原生才能拦截  postBody为原生拦截参数
             if (isMobile.android.phone) {
-                sendUrl = `http://${window.location.host}${url}?postBody=${JSON.stringify(opt)}`;
+                const opt = JSON.stringify(options);
+                // 安卓特殊处理 %
+                sendUrl = `http://${window.location.host}${url}?postBody=${opt.replace('%', '%25')}`;
             }
 
             // 如果是苹果ios post带上postBody
@@ -223,7 +222,7 @@ export default class http {
                     Accept: 'application/json',
                     token: true,
                 },
-                body: JSON.stringify(opt)
+                body: JSON.stringify(options)
             })
                 .then((response) => {
                     const { status } = response;
