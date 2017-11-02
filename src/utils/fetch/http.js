@@ -18,7 +18,11 @@ function createLoading(url) {
     requestingList.push(url);
     if (!loading) {
         if (requestingList.length > 0 && !loading) {
-            Toast.loading('加载中', 0);
+            try {
+                Toast.loading('加载中', 0);
+            } catch (ex) {
+                // Do nothing
+            }
             loading = true;
         }
     }
