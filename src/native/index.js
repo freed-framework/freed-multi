@@ -16,6 +16,7 @@ import networkStatus from './networkStatus';
 import fetchCommonParams from './fetchCommonParams';
 import handleError from './handleError';
 import notification from './notification';
+import deepLink from './deepLink';
 
 const Native = {
     deviceready,
@@ -29,6 +30,7 @@ const Native = {
     fetchCommonParams,
     handleError,
     notification,
+    deepLink,
 };
 
 export default Native;

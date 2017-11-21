@@ -5,7 +5,7 @@
  * 支付接口
  */
 
-
+import { Modal } from 'antd-mobile';
 import deviceready from './deviceready';
 
 
@@ -31,7 +31,7 @@ import deviceready from './deviceready';
 /**
  * 调用原生支付插件
  *
- * @param {string} payType 支付类型（"weixin": "微信支付"；"alipay": "支付宝"）
+ * @param {string} payType 支付类型（"weixin": "微信支付"；"alipay": "支付宝"；"ytpay": "雅堂金融"）
  * @param {string} payInfo 支付数据
  * @param {function} result 支付回调
  */
@@ -58,6 +58,20 @@ export default (payType, payInfo, result) => {
                 }, (info) => {
                     result('fail', info);
                 });
+                break;
+            case 'ytpay':
+                try {
+                    window.YTPay.jrpay(
+                        payInfo.prePayInfo
+                        , (info) => {
+                            result('success', info);
+                        }, (info) => {
+                            result('fail', info);
+                        }
+                    );
+                } catch (e) {
+                    Modal.alert('提示', '当前APP版本不支持该支付方式，请升级APP版本！');
+                }
                 break;
             default:
                 break;

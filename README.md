@@ -320,6 +320,31 @@ rightButton
    | payType          | 支付类型 | string | 是  | "weixin": "微信支付"；"alipay": "支付宝" | |
    | payInfo             | 支付信息 | object | 是  |  | |
    | callback             | 支付回调 | function | 是  |  | |
+ - deepLink(options, success, fail) 跨模块跳转
+ 
+    ```
+        import { Native } from 'freed-multi';
+        	    
+        Native.deepLink(
+            {
+                moduleID: 101,
+                moduleKey: 'index',
+                param: {
+                    id: 100000,
+                    text: 'aaa'
+                },
+                transition: 'right',
+                closeSelf: false
+            }
+        )
+    ```
+    | 参数             | 说明           | 类型       | 是否必须  |  可选值        | 默认值       |
+   |---------------- |----------------|----------|----------|--------------|---------
+   | moduleID          | 模块ID | number | 是  | 100: '供应链' 101: '活动页' | |
+   | moduleKey             | 跳转落地页key | string | 是  |  | |
+   | param             | 传入参数 | object | 否  |  | |
+   | transition             | 跳转动画 | string | 否  | right, bottom | right |
+   | closeSelf             | 是否关闭当前页 | boolean | 否  |  | false |
 ## style
  - border 1px 处理
 ```
