@@ -56,7 +56,7 @@ function handleResult(data, resolve, reject, onError) {
             if (onError) {
                 onError(data, status);
             } else {
-                Toast.info(typeof data.message === 'string' ? data.message : '服务器错误');
+                Toast.info(typeof data.message === 'string' ? data.message : '亲，服务器开了会小差，马上回来');
                 reject(data);
             }
             break;
@@ -99,7 +99,7 @@ function handleError(error) {
 function isNetwork() {
     Native.networkStatus((status) => {
         if (status === 0) {
-            Toast.offline('网络连接失败!');
+            Toast.offline('网络不给力，请检查网络');
         }
     });
 }
