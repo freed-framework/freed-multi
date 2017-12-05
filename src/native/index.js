@@ -17,6 +17,7 @@ import fetchCommonParams from './fetchCommonParams';
 import handleError from './handleError';
 import notification from './notification';
 import deepLink from './deepLink';
+import scan from './scan';
 
 const Native = {
     deviceready,
@@ -31,6 +32,7 @@ const Native = {
     handleError,
     notification,
     deepLink,
+    scan,
 };
 
 export default Native;

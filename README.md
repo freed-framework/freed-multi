@@ -345,6 +345,21 @@ rightButton
    | param             | 传入参数 | object | 否  |  | |
    | transition             | 跳转动画 | string | 否  | right, bottom | right |
    | closeSelf             | 是否关闭当前页 | boolean | 否  |  | false |
+ - scan(title, callback) 扫一扫
+ ```
+    import { Native } from 'freed-multi';
+            	    
+    Native.scan(
+        '测试扫一扫',
+        (data) => {
+            // data 成功扫描回调
+        }
+    )
+ ```
+ | 参数             | 说明           | 类型       | 是否必须  |  可选值        | 默认值       |
+|---------------- |----------------|----------|----------|--------------|---------
+| title          | 显示标题 | string | 否  |  | '' |
+| callback             | 成功扫描回调 | function | 是  |  | |
 ## style
  - border 1px 处理
 ```
