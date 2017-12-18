@@ -134,7 +134,7 @@ class Stepper extends PureComponent {
      */
     handleChange(e) {
         const { onChange } = this.props;
-        const val = e.target.value;
+        const val = parseInt(e.target.value, 10);
 
         this.setState({
             num: val
