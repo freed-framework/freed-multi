@@ -1,0 +1,35 @@
+.multi-icon {
+    fill: currentColor;
+    background-size: cover;
+    width: 44px;
+    height: 44px;
+
+    &-xxs {
+        width: 30px;
+        height: 30px;
+    }
+
+    &-xs {
+        width: 36px;
+        height: 36px;
+    }
+
+    &-sm {
+        width: 42px;
+        height: 42px;
+    }
+
+    &-md {
+        width: 44px;
+        height: 44px;
+    }
+
+    &-lg {
+        width: 72px;
+        height: 72px;
+    }
+
+    &-toastLoading {
+        animation: cirle-anim 1s linear infinite;
+    }
+}
