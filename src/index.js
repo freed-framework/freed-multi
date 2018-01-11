@@ -20,3 +20,4 @@ export { default as SearchNavBar, SearchBarContentLayout } from './components/se
 export { default as NavBar, NavBarContentLayout } from './components/nav-bar';
 export { default as LazyLoad } from './components/lazy-load';
 export { default as Stepper} from './components/stepper';
+export { default as Toast } from './components/toast';
