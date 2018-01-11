@@ -1,8 +1,8 @@
 {
   "name": "freed-multi",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "hybrid build",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "cross-env ./node_modules/.bin/eslint ./src/components --ext '.js,.jsx'",
     "doc": "bisheng start -c ./tool/document/bisheng.config.js",
