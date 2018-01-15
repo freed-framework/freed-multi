@@ -6,9 +6,9 @@
  */
 
 import 'whatwg-fetch'; // https://github.com/github/fetch
-import { Toast, Modal } from 'antd-mobile';
+import { Modal } from 'antd-mobile';
 import Native from '../../native';
-import { util, isMobile } from '../../index';
+import { util, isMobile, Toast } from '../../index';
 
 let loading = null;
 let errorAlert = null;
