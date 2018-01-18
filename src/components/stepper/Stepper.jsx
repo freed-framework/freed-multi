@@ -82,7 +82,8 @@ class Stepper extends PureComponent {
     /**
      * 增加数量
      */
-    add() {
+    add(e) {
+        e.stopPropagation();
         if (this.props.max && this.props.max <= this.state.num) {
             this.setState({
                 disableAddButton: true
@@ -106,7 +107,8 @@ class Stepper extends PureComponent {
     /**
      * 删除数量
      */
-    cut() {
+    cut(e) {
+        e.stopPropagation();
         if (this.props.min >= this.state.num) {
             this.setState({
                 disableCutButton: true
