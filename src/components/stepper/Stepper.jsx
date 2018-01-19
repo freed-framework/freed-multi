@@ -146,6 +146,7 @@ class Stepper extends PureComponent {
     }
 
     handleFocus(e) {
+        e.stopPropagation();
         e.preventDefault();
 
         // 解决安卓输入页面未上滑
