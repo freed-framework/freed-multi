@@ -187,6 +187,16 @@ class ListViewComponent extends PureComponent {
         });
     }
 
+    /**
+     * 滚动listview
+     *
+     * @param {number} start 开始位置
+     * @param {number} end 结束位置
+     */
+    scrollTo(start, end) {
+        this.listview.scrollTo(start, end);
+    }
+
     renderRow(rowData) {
         return this.props.renderItemFunc(rowData);
     }
@@ -216,6 +226,7 @@ class ListViewComponent extends PureComponent {
                 style={{height: 200}}
             >
                 <ListView
+                    ref={ref => { this.listview = ref }}
                     dataSource={list}
                     renderFooter={() => {
                         if (!isLoadMore) {
